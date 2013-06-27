@@ -3,6 +3,7 @@ package com.shoureken.euvejo.activity;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
 import android.content.Context;
@@ -19,6 +20,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.shoureken.euvejo.R;
 import com.shoureken.euvejo.data.Serie;
@@ -27,10 +29,10 @@ import com.shoureken.euvejo.data.request.RequestListener;
 
 import de.akquinet.android.androlog.Log;
 
-public class ActivitySearching extends AbstractActivity implements OnClickListener, RequestListener<Serie> {
+public class SeriesSearchingActivity extends AbstractActivity implements OnClickListener, RequestListener<Serie> {
 
     private EditText editText = null;
-    private static final String TAG = ActivitySearching.class.getSimpleName();
+    private static final String TAG = SeriesSearchingActivity.class.getSimpleName();
     // private SeriesAdapter listViewAdapterSeies;
 
     private SeriesAdapter seriesAdapter;
@@ -66,7 +68,7 @@ public class ActivitySearching extends AbstractActivity implements OnClickListen
 		if (serie != null) {
 		    Intent intent = new Intent();
 		    intent.putExtra("serie", serie);
-		    intent.setClass(getApplicationContext(), ActivitySeriesDetail.class);
+		    intent.setClass(getApplicationContext(), SeriesDetailActivity.class);
 		    startActivity(intent);
 		}
 	    }
@@ -81,7 +83,7 @@ public class ActivitySearching extends AbstractActivity implements OnClickListen
 	    if (editText != null) {
 		final String name = editText.getText().toString();
 		final Request<Serie> request = Request.getRequest(Serie.class, false, this, name, "en");
-		request.execute();
+		request.execute(this);
 	    }
 	    break;
 	default:
@@ -104,7 +106,7 @@ public class ActivitySearching extends AbstractActivity implements OnClickListen
 	final Context context;
 
 	public SeriesAdapter(Context context, List<Serie> list) {
-	    super(context, R.layout.rowlayout_message, list);
+	    super(context, R.layout.rowlayout_serie, list);
 	    this.context = context;
 	}
 
@@ -112,7 +114,7 @@ public class ActivitySearching extends AbstractActivity implements OnClickListen
 	public View getView(int position, View convertView, ViewGroup parent) {
 	    Serie serie = getItem(position);
 	    LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-	    View rowView = inflater.inflate(R.layout.rowlayout_message, parent, false);
+	    View rowView = inflater.inflate(R.layout.rowlayout_serie, parent, false);
 	    TextView tvName = (TextView) rowView.findViewById(R.id.text_name);
 	    if (tvName != null) {
 		tvName.setText(serie.getName());
@@ -122,7 +124,15 @@ public class ActivitySearching extends AbstractActivity implements OnClickListen
 
 	public void setList(List<Serie> newList) {
 	    this.clear();
-	    this.addAll(newList);
+	    for (Iterator<Serie> iterator = newList.iterator(); iterator.hasNext();) {
+		Serie serie = iterator.next();
+		this.add(serie);
+	    }
 	}
+    }
+
+    @Override
+    public void onRequestException(Exception e) {
+	Toast.makeText(getApplicationContext(), e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
     }
 }

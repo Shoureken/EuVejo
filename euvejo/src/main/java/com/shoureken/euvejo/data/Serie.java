@@ -1,24 +1,33 @@
 package com.shoureken.euvejo.data;
 
-public class Serie extends Entity{
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+public class Serie extends Entity {
 
     private static final long serialVersionUID = -7865984874913279200L;
     private Long id;
     private String name;
     private String overview;
-    private String firstAired;
+    private Date firstAired;
     private String language;
-    private String actors;
+    private ArrayList<String> actors;
     private String airDay;
     private String airTime;
     private String network;
     private String rating;
+    private Integer ratingCount;
     private String status;
-    private String genre;
+    private ArrayList<String> genres;
     private String runtime;
     private String IMDB;
     private String zap2it;
     private String aliasNames;
+    private Long lastUpdate;
+    private String contentRating;
+    private String bannerUrl;
+    private String posterUrl;
 
     public String getIMDB() {
 	return IMDB;
@@ -36,12 +45,12 @@ public class Serie extends Entity{
 	this.runtime = runtime;
     }
 
-    public String getGenre() {
-	return genre;
+    public List<String> getGenres() {
+	return genres;
     }
 
-    public void setGenre(String genre) {
-	this.genre = genre;
+    public void setGenres(List<String> genres) {
+	this.genres = new ArrayList<String>(genres);
     }
 
     public String getStatus() {
@@ -116,19 +125,19 @@ public class Serie extends Entity{
 	this.overview = overview;
     }
 
-    public String getFirstAired() {
+    public Date getFirstAired() {
 	return firstAired;
     }
 
-    public void setFirstAired(String firstAired) {
+    public void setFirstAired(Date firstAired) {
 	this.firstAired = firstAired;
     }
 
-    public void setActors(String actorList) {
-	actors = actorList;
+    public void setActors(List<String> actorList) {
+	actors = new ArrayList<String>(actorList);
     }
 
-    public String getActors() {
+    public List<String> getActors() {
 	return actors;
     }
 
@@ -136,38 +145,106 @@ public class Serie extends Entity{
      * @return the zap2it
      */
     public String getZap2it() {
-        return zap2it;
+	return zap2it;
     }
 
     /**
-     * @param zap2it the zap2it to set
+     * @param zap2it
+     *            the zap2it to set
      */
     public void setZap2it(String zap2it) {
-        this.zap2it = zap2it;
+	this.zap2it = zap2it;
     }
-    
+
     /**
      * @return the aliasNames
      */
     public String getAliasNames() {
-        return aliasNames;
+	return aliasNames;
     }
 
     /**
-     * @param aliasNames the aliasNames to set
+     * @param aliasNames
+     *            the aliasNames to set
      */
     public void setAliasNames(String aliasNames) {
-        this.aliasNames = aliasNames;
+	this.aliasNames = aliasNames;
     }
 
-    /* (non-Javadoc)
-     * @see java.lang.Object#toString()
+    /**
+     * @return the ratingCount
      */
-    @Override
-    public String toString() {
-	return "Serie [id=" + id + ", name=" + name + ", overview=" + overview + ", firstAired=" + firstAired
-		+ ", language=" + language + ", actors=" + actors + ", airDay=" + airDay + ", airTime=" + airTime
-		+ ", network=" + network + ", rating=" + rating + ", status=" + status + ", genre=" + genre
-		+ ", runtime=" + runtime + ", IMDB=" + IMDB + ", zap2it=" + zap2it + ", aliasNames=" + aliasNames + "]";
+    public Integer getRatingCount() {
+	return ratingCount;
     }
+
+    /**
+     * @param ratingCount
+     *            the ratingCount to set
+     */
+    public void setRatingCount(Integer ratingCount) {
+	this.ratingCount = ratingCount;
+    }
+
+    /**
+     * @return the lastUpdate
+     */
+    public Long getLastUpdate() {
+	return lastUpdate;
+    }
+
+    /**
+     * @param lastUpdate
+     *            the lastUpdate to set
+     */
+    public void setLastUpdate(Long lastUpdate) {
+	this.lastUpdate = lastUpdate;
+    }
+
+    /**
+     * @return the contentRating
+     */
+    public String getContentRating() {
+	return contentRating;
+    }
+
+    /**
+     * @param contentRating
+     *            the contentRating to set
+     */
+    public void setContentRating(String contentRating) {
+	this.contentRating = contentRating;
+    }
+
+    /**
+     * @return the bannerUrl
+     */
+    public String getBannerUrl() {
+	return bannerUrl;
+    }
+
+    /**
+     * @param bannerUrl
+     *            the bannerUrl to set
+     */
+    public void setBannerUrl(String bannerUrl) {
+	this.bannerUrl = bannerUrl;
+    }
+
+    /**
+     * @return the posterUrl
+     */
+    public String getPosterUrl() {
+	return posterUrl;
+    }
+
+    /**
+     * @param posterUrl
+     *            the posterUrl to set
+     */
+    public void setPosterUrl(String posterUrl) {
+	this.posterUrl = posterUrl;
+    }
+    
+    
 }

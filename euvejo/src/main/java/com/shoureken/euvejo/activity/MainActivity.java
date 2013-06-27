@@ -10,9 +10,9 @@ import com.shoureken.euvejo.R;
 
 import de.akquinet.android.androlog.Log;
 
-public class ActivityMain extends AbstractActivity implements OnClickListener {
+public class MainActivity extends AbstractActivity implements OnClickListener {
 
-    private static final String TAG = ActivityMain.class.getSimpleName();
+    private static final String TAG = MainActivity.class.getSimpleName();
 
     /**
      * Called when the activity is first created.
@@ -36,7 +36,14 @@ public class ActivityMain extends AbstractActivity implements OnClickListener {
 	setContentView(R.layout.activity_main);
 
 	Button btSearch = (Button) findViewById(R.id.buttonSearch);
+	Button btSeries = (Button) findViewById(R.id.buttonSeries);
+	Button btSettings = (Button) findViewById(R.id.buttonSettings);
+	Button btExit = (Button) findViewById(R.id.buttonExit);
 	btSearch.setOnClickListener(this);
+	btSeries.setOnClickListener(this);
+	btSettings.setOnClickListener(this);
+	btExit.setOnClickListener(this);
+
     }
 
     @Override
@@ -46,8 +53,26 @@ public class ActivityMain extends AbstractActivity implements OnClickListener {
 	    getMainHandler().post(new Runnable() {
 		public void run() {
 		    Intent intent = new Intent();
-		    intent.setClass(getApplicationContext(), ActivitySearching.class);
+		    intent.setClass(getApplicationContext(), SeriesSearchingActivity.class);
 		    startActivity(intent);
+		}
+	    });
+	    break;
+	case R.id.buttonSeries:
+	    break;
+	case R.id.buttonSettings:
+	    getMainHandler().post(new Runnable() {
+		public void run() {
+		    Intent intent = new Intent();
+		    intent.setClass(getApplicationContext(), ConfigActivity.class);
+		    startActivity(intent);
+		}
+	    });
+	    break;
+	case R.id.buttonExit:
+	    getMainHandler().post(new Runnable() {
+		public void run() {
+		    System.exit(0);
 		}
 	    });
 	    break;

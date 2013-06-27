@@ -11,15 +11,15 @@
     <uses-sdk
         android:minSdkVersion="8"
         android:targetSdkVersion="17" />
-    
+
     <uses-permission android:name="android.permission.INTERNET" />
-	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:debuggable="true"
         android:icon="@drawable/icon"
         android:label="@string/app_name" >
-        <activity android:name="com.shoureken.euvejo.activity.ActivityMain" >
+        <activity android:name="com.shoureken.euvejo.activity.MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,16 +27,33 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.shoureken.euvejo.activity.ActivityConfig"
+            android:name="com.shoureken.euvejo.activity.ConfigActivity"
             android:label="@string/title_activity_config" >
         </activity>
         <activity
-            android:name="com.shoureken.euvejo.activity.ActivitySearching"
+            android:name="com.shoureken.euvejo.activity.SeriesSearchingActivity"
             android:label="@string/title_activity_searching" >
         </activity>
         <activity
-            android:name="com.shoureken.euvejo.activity.ActivitySeriesDetail"
+            android:name="com.shoureken.euvejo.activity.SeriesDetailActivity"
             android:label="@string/title_activity_series" >
+        </activity>
+        <activity
+            android:name="com.shoureken.euvejo.activity.ActorsActivity"
+            android:label="@string/title_activity_series" >
+        </activity>
+        <activity
+            android:name="com.shoureken.euvejo.activity.EpisodiesListActivity"
+            android:label="@string/title_activity_series" >
+        </activity>
+        <activity
+            android:name="com.shoureken.euvejo.activity.EpisodiesDetailActivity"
+            android:label="@string/title_activity_series" >
+        </activity>
+        <activity
+            android:name="com.shoureken.euvejo.activity.ImageViewActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
         </activity>
     </application>
 

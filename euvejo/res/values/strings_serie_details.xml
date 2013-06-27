@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="serie_detail_text_title_name">Titulo</string>
+    <string name="serie_detail_text_title_rating">Nota</string>
+    <string name="serie_detail_text_title_genres">Genero</string>
+    <string name="serie_detail_text_title_first_aired">Primeiro Episodio</string>
+    <string name="serie_detail_text_title_air_day_time">Vai ao ar</string>
+    <string name="serie_detail_text_title_overview">Sinopse</string>
+
+</resources>

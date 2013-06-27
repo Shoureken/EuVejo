@@ -8,5 +8,8 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_series">SeriesActivity</string>
     <string name="title_activity_searching">Searching</string>
-
+    <string name="alert_wait_message">Carregando</string>
+    <string name="slow_conection">Conexão lenta</string>
+    <string name="actors_role">Como %1$s - %2$s</string>
+    
 </resources>

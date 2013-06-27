@@ -6,9 +6,9 @@ import com.shoureken.euvejo.R;
 
 import de.akquinet.android.androlog.Log;
 
-public class ActivityConfig extends AbstractActivity {
+public class ConfigActivity extends AbstractActivity {
     
-    private static final String TAG = ActivityConfig.class.getSimpleName();
+    private static final String TAG = ConfigActivity.class.getSimpleName();
 
     /**
      * Called when the activity is first created.

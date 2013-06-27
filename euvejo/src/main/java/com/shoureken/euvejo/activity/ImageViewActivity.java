@@ -1,21 +1,17 @@
 package com.shoureken.euvejo.activity;
 
-import java.util.Arrays;
-import java.util.List;
-
 import android.os.Bundle;
 
+import com.raptureinvenice.webimageview.image.WebImageView;
 import com.shoureken.euvejo.R;
-import com.shoureken.euvejo.data.Serie;
-import com.shoureken.euvejo.data.request.Request;
-import com.shoureken.euvejo.data.request.RequestListener;
 
 import de.akquinet.android.androlog.Log;
 
-public class ActivitySeriesDetail extends AbstractActivity implements RequestListener<Serie> {
+public class ImageViewActivity extends AbstractActivity {
 
-    private static final String TAG = ActivitySeriesDetail.class.getSimpleName();
-    private Serie serie;
+    private static final String TAG = ImageViewActivity.class.getSimpleName();
+    //private AQuery aq;
+
 
     /**
      * Called when the activity is first created.
@@ -35,8 +31,6 @@ public class ActivitySeriesDetail extends AbstractActivity implements RequestLis
 
 	// Log a message (only on dev platform)
 	Log.i(TAG, "onCreate");
-
-	setContentView(R.layout.activity_series_detail);
 	
 	if (getIntent() == null){
 	    finish();
@@ -44,17 +38,19 @@ public class ActivitySeriesDetail extends AbstractActivity implements RequestLis
 	if (getIntent().getExtras() == null){
 	    finish();
 	}
-	if (getIntent().getExtras().getSerializable("serie") == null){
+	if (getIntent().getExtras().getString("urlImage") == null){
 	    finish();
 	}
-	Serie basicaSerie = (Serie) getIntent().getExtras().getSerializable("serie");
-	final Request<Serie> request = Request.getRequest(Serie.class, true, this, basicaSerie.getId(), "en");
-	request.execute();
+	
+	final String urlImage = getIntent().getExtras().getString("urlImage");
+	
+	setContentView(R.layout.activity_image_view);
+	
+	WebImageView myImage = (WebImageView)findViewById(R.id.my_img);
+	myImage.setImageWithURL(this, urlImage);
     }
-
-    @Override
-    public void onRequestComplete(List<Serie> parsedList) {
-	Log.e(TAG, "Finish To Load "+Arrays.toString(parsedList.toArray()));
+    
+    protected int getContainer() {
+	return R.layout.activity_image_view;
     }
-
 }
